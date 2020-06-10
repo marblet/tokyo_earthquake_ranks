@@ -1,6 +1,6 @@
 <template>
 <div>
-  <AddressForm v-model="inputAddress"></AddressForm>
+  <AddressForm v-bind:value.sync="inputAddress"/>
   <p>Your input is {{ inputAddress }}</p>
   <p>Hit: {{match.length}}</p>
   <table>
@@ -27,7 +27,7 @@ export default {
   name: 'AreaList',
   data () {
     return {
-      inputAddress: '',
+      inputAddress: '千',
       areas: areas
     }
   },

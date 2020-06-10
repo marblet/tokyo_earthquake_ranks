@@ -1,10 +1,6 @@
 <template>
   <div>
-    <input
-      type="text"
-      v-model="value"
-      v-on="listeners"
-    >
+    <v-text-field v-model="innerVal"></v-text-field>
   </div>
 </template>
 
@@ -17,12 +13,12 @@ export default {
     }
   },
   computed: {
-    listeners () {
-      return {
-        // Pass all component listeners directly to input
-        ...this.$listeners,
-        // Override input listener to work with v-model
-        input: event => this.$emit('input', event.target.value)
+    innerVal: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.$emit('update:value', value)
       }
     }
   }

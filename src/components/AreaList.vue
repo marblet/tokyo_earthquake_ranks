@@ -10,11 +10,15 @@
       <td>総合ランク</td>
     </tr>
     <AreaListItem
-      v-for="area in match"
+      v-for="area in getAreas"
       v-bind:key="area.id"
       v-bind:area="area"
     ></AreaListItem>
   </table>
+  <v-pagination
+    v-model="page"
+    :length="length"
+  ></v-pagination>
 
 </div>
 </template>
@@ -27,18 +31,31 @@ export default {
   name: 'AreaList',
   data () {
     return {
-      inputAddress: '千',
-      areas: areas
+      inputAddress: '',
+      areas: areas,
+      match: [],
+      page: 1,
+      pageSize: 20
     }
   },
+  created () {
+    this.match = this.areas
+    this.length = Math.ceil(this.match.length / this.pageSize)
+  },
   computed: {
-    match: function () {
-      return this.areas.filter(area => area.name.indexOf(this.inputAddress) > -1)
+    getAreas: function () {
+      return this.match.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)
     }
   },
   components: {
     AddressForm,
     AreaListItem
+  },
+  watch: {
+    inputAddress: function (newAddress) {
+      this.match = this.areas.filter(area => area.name.indexOf(newAddress) > -1)
+      this.length = Math.ceil(this.match.length / this.pageSize)
+    }
   }
 }
 </script>

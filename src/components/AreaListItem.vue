@@ -1,8 +1,8 @@
 <template>
   <tr>
-    <td>{{ area.name }}</td>
-    <td>{{ area.order }}</td>
-    <td>{{ area.rank }}</td>
+    <td>{{ area.areaname }}</td>
+    <td>{{ area.total_order }}</td>
+    <td>{{ area.total_rank }}</td>
   </tr>
 </template>
 

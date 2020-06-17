@@ -5,7 +5,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://golang:8080'
+        target: 'https://localhost:8080'
       }
     }
   }

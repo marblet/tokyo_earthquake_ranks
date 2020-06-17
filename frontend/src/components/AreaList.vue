@@ -1,6 +1,7 @@
 <template>
 <div>
   <AddressForm v-bind:value.sync="inputAddress"/>
+  <v-btn v-on:click=this.searchAreas>Search</v-btn>
   <p>Your input is {{ inputAddress }}</p>
   <p>Hit: {{this.matchedNum}}</p>
   <table>
@@ -50,6 +51,11 @@ export default {
     AreaListItem
   },
   methods: {
+    searchAreas: function () {
+      axios
+        .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=20`)
+        .then(responce => this.update(responce))
+    },
     update: function (responce) {
       this.matchedNum = responce.data.matched_num
       this.length = Math.ceil(this.matchedNum / this.pageSize)
@@ -57,11 +63,6 @@ export default {
     }
   },
   watch: {
-    inputAddress: function (newAddress) {
-      axios
-        .get(`/api/areas?address=${newAddress}&page=1&displaynum=20`)
-        .then(responce => this.update(responce))
-    },
     page: function (newPage) {
       axios
         .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=20`)

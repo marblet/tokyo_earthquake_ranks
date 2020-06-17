@@ -42,7 +42,7 @@ export default {
   created () {
     // itinialize matchedAreas using API
     axios
-      .get('http://127.0.0.1:8080/api/areas?address=&page=1&displaynum=20')
+      .get('/api/areas?address=&page=1&displaynum=20')
       .then(responce => this.update(responce))
   },
   components: {
@@ -59,12 +59,12 @@ export default {
   watch: {
     inputAddress: function (newAddress) {
       axios
-        .get(`http://localhost:8080/api/areas?address=${newAddress}&page=1&displaynum=20`)
+        .get(`/api/areas?address=${newAddress}&page=1&displaynum=20`)
         .then(responce => this.update(responce))
     },
     page: function (newPage) {
       axios
-        .get(`http://localhost:8080/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=20`)
+        .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=20`)
         .then(responce => this.update(responce))
     }
   }

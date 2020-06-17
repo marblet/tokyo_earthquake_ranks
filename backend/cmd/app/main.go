@@ -51,8 +51,6 @@ func main() {
 }
 
 func getAreas(w rest.ResponseWriter, r *rest.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8081")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 	v := r.URL.Query()
 	address := v.Get("address")
 	page, _ := strconv.Atoi(v.Get("page"))

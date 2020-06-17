@@ -1,2 +1,3 @@
 runtime: go113
+service: backend
 main: ./cmd/app

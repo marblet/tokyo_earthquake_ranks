@@ -1,0 +1,7 @@
+dispatch:
+  - url: "tokyo-earthquake-ranks.df.r.appspot.com/api/*"
+    service: backend
+  - url: "tokyo-earthquake-ranks.df.r.appspot.com/"
+    service: default
+  - url: "tokyo-earthquake-ranks.df.r.appspot.com/(.*)"
+    service: default

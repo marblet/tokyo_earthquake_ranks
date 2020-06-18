@@ -5,7 +5,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://localhost:8080'
+        target: 'https://tokyo-earthquake-ranks.df.r.appspot.com/'
       }
     }
   }

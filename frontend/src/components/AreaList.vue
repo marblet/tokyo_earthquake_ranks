@@ -7,8 +7,10 @@
   <table>
     <tr>
       <td>地名</td>
-      <td>総合順位</td>
-      <td>総合ランク</td>
+      <td>建物倒壊危険度</td>
+      <td>火災危険度</td>
+      <td>災害時活動困難度</td>
+      <td>総合危険度</td>
     </tr>
     <AreaListItem
       v-for="area in matchedAreas"
@@ -67,6 +69,9 @@ export default {
       axios
         .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=20`)
         .then(responce => this.update(responce))
+    },
+    inputAddress: function () {
+      this.searchAreas()
     }
   }
 }

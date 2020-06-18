@@ -1,25 +1,20 @@
 <template>
   <div>
-    <v-text-field v-model="innerVal"></v-text-field>
+    <v-text-field v-model="address" v-on:keydown.13="clicked"></v-text-field>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: {
-      type: String,
-      default: ''
+  data () {
+    return {
+      address: ""
     }
   },
-  computed: {
-    innerVal: {
-      get () {
-        return this.value
-      },
-      set (value) {
-        this.$emit('update:value', value)
-      }
+  methods: {
+    clicked () {
+      this.$emit('update:value', this.address)
+      console.log(this.address)
     }
   }
 }

@@ -2,8 +2,7 @@
 <div>
   <AddressForm v-bind:value.sync="inputAddress"/>
   <v-btn v-on:click=this.searchAreas>Search</v-btn>
-  <p>Your input is {{ inputAddress }}</p>
-  <p>Hit: {{this.matchedNum}}</p>
+  <p>全{{this.matchedNum}}件</p>
   <table>
     <tr>
       <td>地名</td>
@@ -54,6 +53,7 @@ export default {
   },
   methods: {
     searchAreas: function () {
+      this.page = 1
       axios
         .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=20`)
         .then(responce => this.update(responce))

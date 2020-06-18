@@ -36,7 +36,7 @@ export default {
       inputAddress: '',
       matchedAreas: [],
       page: 1,
-      pageSize: 20,
+      displayNum: 20,
       matchedNum: 0,
       length: 0
     }
@@ -55,19 +55,19 @@ export default {
     searchAreas: function () {
       this.page = 1
       axios
-        .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=20`)
+        .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=${this.displayNum}`)
         .then(responce => this.update(responce))
     },
     update: function (responce) {
       this.matchedNum = responce.data.matched_num
-      this.length = Math.ceil(this.matchedNum / this.pageSize)
+      this.length = Math.ceil(this.matchedNum / this.displayNum)
       this.matchedAreas = responce.data.matched_areas
     }
   },
   watch: {
     page: function (newPage) {
       axios
-        .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=20`)
+        .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=${this.displayNum}`)
         .then(responce => this.update(responce))
     },
     inputAddress: function () {

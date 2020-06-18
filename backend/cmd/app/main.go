@@ -17,16 +17,16 @@ type AreaInfo struct {
 	BaseClass		string	`json:"base_class"`
 	CollapseHa		float64	`json:"collapse_ha"`
 	CollapseOrder	uint	`json:"collapse_order"`
-	CollapseRank	uint	`json:"collapse_rank"`
+	CollapseRank	string	`json:"collapse_rank"`
 	FireHa			float64	`json:"fire_ha"`
 	FireOrder		uint	`json:"fire_order"`
-	FireRank		uint	`json:"fire_rank"`
+	FireRank		string	`json:"fire_rank"`
 	Difficulty		float64	`json:"difficulty"`
 	DifficultyOrder	uint	`json:"difficulty_order"`
-	DifficultyRank	uint	`json:"difficulty_rank"`
+	DifficultyRank	string	`json:"difficulty_rank"`
 	TotalHa			float64	`json:"total_ha"`
 	TotalOrder		uint	`json:"total_order"`
-	TotalRank		uint	`json:"total_rank"`
+	TotalRank		string	`json:"total_rank"`
 }
 
 type Result struct {

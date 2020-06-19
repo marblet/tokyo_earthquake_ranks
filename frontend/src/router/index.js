@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AreaList from '../components/AreaList.vue'
+import About from '../components/About.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: AreaList
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
   }
 ]
 

@@ -1,5 +1,7 @@
 <template>
-  <p>Find Safe City</p>
+  <v-toolbar>
+    <v-toolbar-title>FindSafeCity</v-toolbar-title>
+  </v-toolbar>
 </template>
 
 <script>

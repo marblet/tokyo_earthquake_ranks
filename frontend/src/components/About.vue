@@ -1,5 +1,5 @@
 <template>
-  <v-footer>FindSafeCity</v-footer>
+  <p>About Page</p>
 </template>
 
 <script>

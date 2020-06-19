@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-text-field v-model="address" v-on:keydown.13="clicked"></v-text-field>
+    <v-text-field
+      v-model="address"
+      v-on:keydown.13="clicked"
+      outlined
+    ></v-text-field>
   </div>
 </template>
 
@@ -14,7 +18,6 @@ export default {
   methods: {
     clicked () {
       this.$emit('update:value', this.address)
-      console.log(this.address)
     }
   }
 }

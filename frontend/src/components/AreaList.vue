@@ -2,7 +2,7 @@
 <div>
   <AddressForm v-bind:value.sync="inputAddress"/>
   <v-btn v-on:click=this.searchAreas>Search</v-btn>
-  <p>全{{this.matchedNum}}件</p>
+  <p>全{{this.matchedNum}}件中{{ numTopArea }}件目から{{ numBottomArea }}件目を表示</p>
   <v-simple-table>
     <thead>
       <td>地名</td>
@@ -45,6 +45,14 @@ export default {
       displayNum: 20,
       matchedNum: 0,
       length: 0
+    }
+  },
+  computed: {
+    numTopArea () {
+      return Math.min((this.page - 1) * this.displayNum + 1, this.matchedNum)
+    },
+    numBottomArea () {
+      return Math.min(this.page * this.displayNum, this.matchedNum)
     }
   },
   watch: {

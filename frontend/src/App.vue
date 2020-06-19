@@ -4,12 +4,13 @@
     <v-content>
       <AreaList/>
     </v-content>
-    <v-footer>FindSafeCity</v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import AreaList from './components/AreaList';
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 export default {
@@ -17,6 +18,7 @@ export default {
 
   components: {
     AreaList,
+    Footer,
     Header,
   },
 

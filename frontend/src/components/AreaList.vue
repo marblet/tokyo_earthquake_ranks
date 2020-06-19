@@ -68,7 +68,7 @@ export default {
   created () {
     // itinialize matchedAreas using API
     axios
-      .get('/api/areas?address=&page=1&displaynum=20')
+      .get(`/api/areas?address=&page=1&displaynum=${this.displayNum}`)
       .then(responce => this.update(responce))
   },
   methods: {

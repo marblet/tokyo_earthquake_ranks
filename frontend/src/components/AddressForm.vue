@@ -3,7 +3,8 @@
     <v-text-field
       v-model="address"
       v-on:keydown.13="clicked"
-      outlined
+      solo
+      append-icon="mdi-magnify"
     ></v-text-field>
   </div>
 </template>

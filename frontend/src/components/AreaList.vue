@@ -1,7 +1,6 @@
 <template>
 <div>
   <AddressForm v-bind:value.sync="inputAddress"/>
-  <v-btn v-on:click=this.searchAreas>Search</v-btn>
   <p>全{{this.matchedNum}}件中{{ numTopArea }}件目から{{ numBottomArea }}件目を表示</p>
   <v-simple-table>
     <thead>

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="arealist">
   <AddressForm v-bind:value.sync="inputAddress"/>
   <p>全{{this.matchedNum}}件中{{ numTopArea }}件目から{{ numBottomArea }}件目を表示</p>
   <v-simple-table>
@@ -22,7 +22,6 @@
     v-model="page"
     :length="length"
   ></v-pagination>
-
 </div>
 </template>
 
@@ -86,6 +85,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.arealist {
+  width: 1200px;
+  margin: auto;
+  padding: {
+    bottom: 10px;
+    left: 5px;
+    right: 5px;
+    top: 10px;
+  }
+}
 </style>

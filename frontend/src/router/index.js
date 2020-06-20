@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AreaList from '../components/AreaList.vue'
-import About from '../components/About.vue'
+import About from '../views/About.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +9,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: AreaList
+    component: Home
   },
   {
     path: '/about',

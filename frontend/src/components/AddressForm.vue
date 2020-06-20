@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="address-field">
     <v-text-field
       v-model="address"
       v-on:keydown.13="clicked"
@@ -25,5 +25,8 @@ export default {
 </script>
 
 <style>
-
+.address-field {
+  width: 90%;
+  margin: auto;
+}
 </style>

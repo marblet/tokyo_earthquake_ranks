@@ -2,7 +2,9 @@
   <v-app>
     <Header />
     <v-content>
-      <router-view/>
+      <div class="main-content">
+        <router-view/>
+      </div>
     </v-content>
     <Footer />
   </v-app>
@@ -25,3 +27,16 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+.main-content {
+  width: 1100px;
+  margin: auto;
+  padding: {
+    bottom: 10px;
+    left: 5px;
+    right: 5px;
+    top: 10px;
+  }
+}
+</style>

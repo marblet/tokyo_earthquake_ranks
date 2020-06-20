@@ -86,14 +86,4 @@ export default {
 </script>
 
 <style lang="scss">
-.arealist {
-  width: 1200px;
-  margin: auto;
-  padding: {
-    bottom: 10px;
-    left: 5px;
-    right: 5px;
-    top: 10px;
-  }
-}
 </style>

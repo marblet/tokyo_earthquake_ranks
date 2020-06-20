@@ -1,7 +1,7 @@
 <template>
-  <v-toolbar>
+  <v-app-bar absolute app flat>
     <v-toolbar-title>FindSafeCity</v-toolbar-title>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script>
@@ -10,6 +10,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
 </style>

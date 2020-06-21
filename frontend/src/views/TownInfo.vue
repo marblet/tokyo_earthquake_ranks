@@ -62,6 +62,16 @@ export default {
       this.town = responce.data
       this.loading = false
     }
+  },
+  head () {
+    return {
+      title: {
+        inner: this.town.municipality + this.town.town_name
+      }
+    }
+  },
+  updated () {
+    this.$emit('updateHead')
   }
 }
 </script>

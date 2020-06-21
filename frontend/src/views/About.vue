@@ -7,3 +7,13 @@
     <h3>災害時</h3>
   </div>
 </template>
+
+<script>
+export default {
+  head: {
+    title: {
+      inner: "About"
+    }
+  }
+}
+</script>

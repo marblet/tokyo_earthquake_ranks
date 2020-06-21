@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <Title />
-    <TownList />
+    <AddressForm />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import AddressForm from '@/components/AddressForm.vue'
 import Title from '@/components/Title.vue'
-import TownList from '@/components/TownList.vue'
 
 export default {
   name: 'Home',
   components: {
+    AddressForm,
     Title,
-    TownList,
   }
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
 <div class="townlist">
-  <AddressForm v-bind:value.sync="inputAddress"/>
   <p>全{{this.matchedNum}}件中{{ numTopTown }}件目から{{ numBottomTown }}件目を表示</p>
   <v-simple-table>
     <thead>
@@ -19,61 +18,55 @@
     </tbody>
   </v-simple-table>
   <v-pagination
-    v-model="page"
+    v-model="pageNum"
     :length="length"
   ></v-pagination>
 </div>
 </template>
 
 <script>
-import AddressForm from './AddressForm'
 import axios from 'axios'
 import TownListItem from './TownListItem'
 export default {
   name: 'TownList',
   components: {
-    AddressForm,
     TownListItem
   },
   data () {
     return {
-      inputAddress: '',
+      pageNum: 1,
       matchedTowns: [],
-      page: 1,
       displayNum: 20,
       matchedNum: 0,
-      length: 0
+      length: 0,
     }
   },
   computed: {
     numTopTown () {
-      return Math.min((this.page - 1) * this.displayNum + 1, this.matchedNum)
+      return Math.min((this.pageNum - 1) * this.displayNum + 1, this.matchedNum)
     },
     numBottomTown () {
-      return Math.min(this.page * this.displayNum, this.matchedNum)
+      return Math.min(this.pageNum * this.displayNum, this.matchedNum)
     }
   },
   watch: {
-    page: function (newPage) {
-      axios
-        .get(`/api/towns?address=${this.inputAddress}&page=${newPage}&displaynum=${this.displayNum}`)
-        .then(responce => this.update(responce))
+    pageNum (newPage) {
+      // need to fix 'avoided redundant navigation' error
+      this.$router.push({path: 'search', query: {address: this.address, page: newPage}}).catch(()=>{})
     },
-    inputAddress: function () {
-      this.searchTowns()
-    }
+    $route () {
+      this.callAPI()
+    },
   },
   created () {
-    // itinialize matchedTowns using API
-    axios
-      .get(`/api/towns?address=&page=1&displaynum=${this.displayNum}`)
-      .then(responce => this.update(responce))
+    this.callAPI()
   },
   methods: {
-    searchTowns: function () {
-      this.page = 1
+    callAPI () {
+      this.address = this.$route.query.address
+      this.pageNum = parseInt(this.$route.query.page)
       axios
-        .get(`/api/towns?address=${this.inputAddress}&page=1&displaynum=${this.displayNum}`)
+        .get(`/api/towns?address=${this.address}&page=${this.pageNum}&displaynum=${this.displayNum}`)
         .then(responce => this.update(responce))
     },
     update: function (responce) {

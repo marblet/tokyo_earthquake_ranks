@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import About from '../views/About.vue'
 import Home from '../views/Home.vue'
+import Search from '../views/Search.vue'
 import TownInfo from '../views/TownInfo.vue'
 
 Vue.use(VueRouter)
@@ -18,9 +19,14 @@ Vue.use(VueRouter)
     component: About,
   },
   {
+    path: '/search',
+    name: 'Search',
+    component: Search,
+  },
+  {
     path: '/town/:id',
     name: 'TownInfo',
-    component: TownInfo
+    component: TownInfo,
   }
 ]
 

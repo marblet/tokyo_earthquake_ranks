@@ -11,14 +11,19 @@
 
 <script>
 export default {
+  props: {
+    inputAddress: String
+  },
   data () {
     return {
-      address: ""
+      address: this.$route.query.address
     }
   },
   methods: {
     clicked () {
-      this.$emit('update:value', this.address)
+      // avoid redundant navigation
+      if (this.address === this.$route.query.address && parseInt(this.$route.query.page) === 1) return
+      this.$router.push({path: 'search', query: {address: this.address, page: 1}})
     }
   }
 }

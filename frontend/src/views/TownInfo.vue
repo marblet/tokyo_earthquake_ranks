@@ -48,7 +48,7 @@ export default {
   data () {
     return {
       loading: true,
-      town: {},
+      town: {'municipality': '', 'town_name': ''},
     }
   },
   created () {

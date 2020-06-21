@@ -13,7 +13,8 @@ import (
 
 type AreaInfo struct {
 	ID 				uint	`json:"id"`
-	AreaName		string	`json:"areaname"`
+	Municipality	string	`json:"municipality"`
+	TownName		string	`json:"town_name"`
 	BaseClass		string	`json:"base_class"`
 	CollapseHa		float64	`json:"collapse_ha"`
 	CollapseOrder	uint	`json:"collapse_order"`
@@ -71,7 +72,7 @@ func getAreas(w rest.ResponseWriter, r *rest.Request) {
 func filter(address string) []AreaInfo {
 	var ret []AreaInfo
 	for _, v := range areaData {
-		if strings.Contains(v.AreaName, address) {
+		if strings.Contains(v.Municipality + v.TownName, address) {
 			ret = append(ret, v)
 		}
 	}

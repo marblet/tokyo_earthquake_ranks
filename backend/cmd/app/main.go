@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AreaInfo struct {
+type TownInfo struct {
 	ID 				uint	`json:"id"`
 	Municipality	string	`json:"municipality"`
 	TownName		string	`json:"town_name"`
@@ -32,22 +32,22 @@ type AreaInfo struct {
 
 type Result struct {
 	MatchedNum		uint		`json:"matched_num"`
-	MatchedAreas	[]AreaInfo	`json:"matched_areas"`
+	MatchedTowns	[]TownInfo	`json:"matched_towns"`
 }
 
-var areaData []AreaInfo
+var townData []TownInfo
 
 func main() {
 	api := rest.NewApi()
 	api.Use(rest.DefaultDevStack...)
 	router, err := rest.MakeRouter(
-		rest.Get("/api/areas", getAreas),
+		rest.Get("/api/towns", getTowns),
 		rest.Get("/api/towninfo", getTownInfo),
 	)
 	if err != nil {
 		log.Fatal(err)
 	}
-	loadAreaFile()
+	loadTownFile()
 	api.SetApp(router)
 	log.Fatal(http.ListenAndServe(":8080", api.MakeHandler()))
 }
@@ -55,35 +55,35 @@ func main() {
 func getTownInfo(w rest.ResponseWriter, r *rest.Request) {
 	v := r.URL.Query()
 	id, _ := strconv.Atoi(v.Get("id"))
-	if id < 1 || id > len(areaData) {
+	if id < 1 || id > len(townData) {
 		w.WriteJson(map[string]string{"Error": "Resouce not found"})
 		return
 	}
-	townInfo := areaData[id - 1]
+	townInfo := townData[id - 1]
 	w.WriteJson(townInfo)
 }
 
-func getAreas(w rest.ResponseWriter, r *rest.Request) {
+func getTowns(w rest.ResponseWriter, r *rest.Request) {
 	v := r.URL.Query()
 	address := v.Get("address")
 	page, _ := strconv.Atoi(v.Get("page"))
 	displaynum, _ := strconv.Atoi(v.Get("displaynum"))
 	if page < 1 || displaynum < 1 {
-		w.WriteJson(Result{MatchedNum: 0, MatchedAreas: nil})
+		w.WriteJson(Result{MatchedNum: 0, MatchedTowns: nil})
 		return
 	}
-	foundAreas := filter(address)
-	foundNum := len(foundAreas)
+	foundTowns := filter(address)
+	foundNum := len(foundTowns)
 	left := int(math.Min(float64(foundNum), float64((page - 1) * displaynum)))
 	right := int(math.Min(float64(foundNum), float64(page * displaynum)))
-	foundAreas = foundAreas[left: right]
-	result := Result{MatchedNum: uint(foundNum), MatchedAreas: foundAreas}
+	foundTowns = foundTowns[left: right]
+	result := Result{MatchedNum: uint(foundNum), MatchedTowns: foundTowns}
 	w.WriteJson(result)
 }
 
-func filter(address string) []AreaInfo {
-	var ret []AreaInfo
-	for _, v := range areaData {
+func filter(address string) []TownInfo {
+	var ret []TownInfo
+	for _, v := range townData {
 		if strings.Contains(v.Municipality + v.TownName, address) {
 			ret = append(ret, v)
 		}
@@ -91,10 +91,10 @@ func filter(address string) []AreaInfo {
 	return ret
 }
 
-func loadAreaFile() {
+func loadTownFile() {
 	raw, err := ioutil.ReadFile("assets/all2.json")
 	if err != nil {
 		panic(err)
 	}
-	json.Unmarshal(raw, &areaData)
+	json.Unmarshal(raw, &townData)
 }

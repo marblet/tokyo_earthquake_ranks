@@ -1,7 +1,7 @@
 <template>
-<div class="arealist">
+<div class="townlist">
   <AddressForm v-bind:value.sync="inputAddress"/>
-  <p>全{{this.matchedNum}}件中{{ numTopArea }}件目から{{ numBottomArea }}件目を表示</p>
+  <p>全{{this.matchedNum}}件中{{ numTopTown }}件目から{{ numBottomTown }}件目を表示</p>
   <v-simple-table>
     <thead>
       <td>地名</td>
@@ -11,11 +11,11 @@
       <td>総合危険度</td>
     </thead>
     <tbody>
-      <AreaListItem
-        v-for="area in matchedAreas"
-        v-bind:key="area.id"
-        v-bind:area="area"
-      ></AreaListItem>
+      <TownListItem
+        v-for="town in matchedTowns"
+        v-bind:key="town.id"
+        v-bind:town="town"
+      ></TownListItem>
     </tbody>
   </v-simple-table>
   <v-pagination
@@ -27,18 +27,18 @@
 
 <script>
 import AddressForm from './AddressForm'
-import AreaListItem from './AreaListItem'
 import axios from 'axios'
+import TownListItem from './TownListItem'
 export default {
-  name: 'AreaList',
+  name: 'TownList',
   components: {
     AddressForm,
-    AreaListItem
+    TownListItem
   },
   data () {
     return {
       inputAddress: '',
-      matchedAreas: [],
+      matchedTowns: [],
       page: 1,
       displayNum: 20,
       matchedNum: 0,
@@ -46,10 +46,10 @@ export default {
     }
   },
   computed: {
-    numTopArea () {
+    numTopTown () {
       return Math.min((this.page - 1) * this.displayNum + 1, this.matchedNum)
     },
-    numBottomArea () {
+    numBottomTown () {
       return Math.min(this.page * this.displayNum, this.matchedNum)
     }
   },
@@ -60,17 +60,17 @@ export default {
         .then(responce => this.update(responce))
     },
     inputAddress: function () {
-      this.searchAreas()
+      this.searchTowns()
     }
   },
   created () {
-    // itinialize matchedAreas using API
+    // itinialize matchedTowns using API
     axios
       .get(`/api/areas?address=&page=1&displaynum=${this.displayNum}`)
       .then(responce => this.update(responce))
   },
   methods: {
-    searchAreas: function () {
+    searchTowns: function () {
       this.page = 1
       axios
         .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=${this.displayNum}`)
@@ -79,7 +79,7 @@ export default {
     update: function (responce) {
       this.matchedNum = responce.data.matched_num
       this.length = Math.ceil(this.matchedNum / this.displayNum)
-      this.matchedAreas = responce.data.matched_areas
+      this.matchedTowns = responce.data.matched_areas
     }
   }
 }

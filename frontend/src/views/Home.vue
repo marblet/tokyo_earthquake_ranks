@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <Title />
-    <AreaList />
+    <TownList />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AreaList from '@/components/AreaList.vue'
 import Title from '@/components/Title.vue'
+import TownList from '@/components/TownList.vue'
 
 export default {
   name: 'Home',
   components: {
-    AreaList,
-    Title
+    Title,
+    TownList,
   }
 }
 </script>

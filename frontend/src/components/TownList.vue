@@ -56,7 +56,7 @@ export default {
   watch: {
     page: function (newPage) {
       axios
-        .get(`/api/areas?address=${this.inputAddress}&page=${newPage}&displaynum=${this.displayNum}`)
+        .get(`/api/towns?address=${this.inputAddress}&page=${newPage}&displaynum=${this.displayNum}`)
         .then(responce => this.update(responce))
     },
     inputAddress: function () {
@@ -66,20 +66,20 @@ export default {
   created () {
     // itinialize matchedTowns using API
     axios
-      .get(`/api/areas?address=&page=1&displaynum=${this.displayNum}`)
+      .get(`/api/towns?address=&page=1&displaynum=${this.displayNum}`)
       .then(responce => this.update(responce))
   },
   methods: {
     searchTowns: function () {
       this.page = 1
       axios
-        .get(`/api/areas?address=${this.inputAddress}&page=1&displaynum=${this.displayNum}`)
+        .get(`/api/towns?address=${this.inputAddress}&page=1&displaynum=${this.displayNum}`)
         .then(responce => this.update(responce))
     },
     update: function (responce) {
       this.matchedNum = responce.data.matched_num
       this.length = Math.ceil(this.matchedNum / this.displayNum)
-      this.matchedTowns = responce.data.matched_areas
+      this.matchedTowns = responce.data.matched_towns
     }
   }
 }

@@ -38,18 +38,24 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  props: {
-    id: {
-      type: int
+  data () {
+    return {
+      town: {}
     }
   },
   created () {
     // itinialize matchedTowns using API
     axios
-      .get(`/api/towninfo?id=${this.id}`)
+      .get(`/api/towninfo?id=${this.$route.params['id']}`)
       .then(responce => this.update(responce))
   },
+  methods: {
+    update (responce) {
+      this.town = responce.data
+    }
+  }
 }
 </script>
 

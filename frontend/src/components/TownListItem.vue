@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td>{{ town.municipality + town.town_name }}</td>
+    <td><router-link :to="`town/${town.id}`">{{ town.municipality + town.town_name }}</router-link></td>
     <td>{{ town.collapse_rank}}</td>
     <td>{{ town.fire_rank}}</td>
     <td>{{ town.difficulty_rank}}</td>
@@ -13,6 +13,11 @@ export default {
   props: {
     town: {
       type: Object
+    }
+  },
+  methods: {
+    pop () {
+      console.log("Hi")
     }
   }
 }

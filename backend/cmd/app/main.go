@@ -42,6 +42,7 @@ func main() {
 	api.Use(rest.DefaultDevStack...)
 	router, err := rest.MakeRouter(
 		rest.Get("/api/areas", getAreas),
+		rest.Get("/api/towninfo", getTownInfo),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -49,6 +50,17 @@ func main() {
 	loadAreaFile()
 	api.SetApp(router)
 	log.Fatal(http.ListenAndServe(":8080", api.MakeHandler()))
+}
+
+func getTownInfo(w rest.ResponseWriter, r *rest.Request) {
+	v := r.URL.Query()
+	id, _ := strconv.Atoi(v.Get("id"))
+	if id < 1 || id > len(areaData) {
+		w.WriteJson(map[string]string{"Error": "Resouce not found"})
+		return
+	}
+	townInfo := areaData[id - 1]
+	w.WriteJson(townInfo)
 }
 
 func getAreas(w rest.ResponseWriter, r *rest.Request) {

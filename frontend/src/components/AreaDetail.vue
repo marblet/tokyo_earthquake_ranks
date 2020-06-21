@@ -12,13 +12,13 @@
         </thead>
         <tbody>
           <td>建物倒壊</td>
-          <td>{{ area.collapse_ha }}</td>
+          <td>{{ area.collapse_ha }} 棟/ha</td>
           <td>{{ area.collapse_order }} / 5177</td>
           <td>{{ area.collapse_rank }}</td>
         </tbody>
         <tbody>
           <td>火災</td>
-          <td>{{ area.fire_ha }}</td>
+          <td>{{ area.fire_ha }} 棟/ha</td>
           <td>{{ area.fire_order }} / 5177</td>
           <td>{{ area.fire_rank }}</td>
         </tbody>
@@ -30,7 +30,7 @@
         </tbody>
         <tbody>
           <td>総合</td>
-          <td>{{ area.total_ha }}</td>
+          <td>{{ area.total_ha }} 棟/ha</td>
           <td>{{ area.total_order }} / 5177</td>
           <td>{{ area.total_rank }}</td>
         </tbody>

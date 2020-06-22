@@ -14,28 +14,30 @@
           <td>ランク</td>
         </thead>
         <tbody>
-          <td>建物倒壊</td>
-          <td>{{ town.collapse_ha }} 棟/ha</td>
-          <td>{{ town.collapse_order }} / 5177</td>
-          <td>{{ town.collapse_rank }}</td>
-        </tbody>
-        <tbody>
-          <td>火災</td>
-          <td>{{ town.fire_ha }} 棟/ha</td>
-          <td>{{ town.fire_order }} / 5177</td>
-          <td>{{ town.fire_rank }}</td>
-        </tbody>
-        <tbody>
-          <td>活動困難</td>
-          <td>{{ town.difficulty }}</td>
-          <td>{{ town.difficulty_order }} / 5177</td>
-          <td>{{ town.difficulty_rank }}</td>
-        </tbody>
-        <tbody>
-          <td>総合</td>
-          <td>{{ town.total_ha }} 棟/ha</td>
-          <td>{{ town.total_order }} / 5177</td>
-          <td>{{ town.total_rank }}</td>
+          <tr>
+            <td>建物倒壊</td>
+            <td>{{ town.collapse_ha }} 棟/ha</td>
+            <td>{{ town.collapse_order }} / 5177</td>
+            <td>{{ town.collapse_rank }}</td>
+          </tr>
+          <tr>
+            <td>火災</td>
+            <td>{{ town.fire_ha }} 棟/ha</td>
+            <td>{{ town.fire_order }} / 5177</td>
+            <td>{{ town.fire_rank }}</td>
+          </tr>
+          <tr>
+            <td>活動困難</td>
+            <td>{{ town.difficulty }}</td>
+            <td>{{ town.difficulty_order }} / 5177</td>
+            <td>{{ town.difficulty_rank }}</td>
+          </tr>
+          <tr>
+            <td>総合</td>
+            <td>{{ town.total_ha }} 棟/ha</td>
+            <td>{{ town.total_order }} / 5177</td>
+            <td>{{ town.total_rank }}</td>
+          </tr>
         </tbody>
       </v-simple-table>
     </div>
@@ -77,5 +79,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/styles/loader.css'
+@import '@/assets/styles/loader.css'
 </style>

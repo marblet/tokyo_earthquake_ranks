@@ -67,14 +67,9 @@ export default {
   },
   head () {
     return {
-      title: {
-        inner: this.town.municipality + this.town.town_name
-      }
+      title: this.town.municipality + this.town.town_name
     }
   },
-  updated () {
-    this.$emit('updateHead')
-  }
 }
 </script>
 

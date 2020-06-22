@@ -10,9 +10,9 @@
 
 <script>
 export default {
-  head: {
-    title: {
-      inner: "About"
+  head () {
+    return {
+      title: "About"
     }
   }
 }

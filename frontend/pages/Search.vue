@@ -24,14 +24,11 @@ export default {
   watch: {
     $route () {
       this.address = this.$route.query.address
-      this.$emit('updateHead')
     }
   },
   head () {
     return {
-      title: {
-        inner: this.address
-      }
+      title: this.address
     }
   },
 }

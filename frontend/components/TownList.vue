@@ -3,11 +3,13 @@
   <p>全{{this.matchedNum}}件中{{ numTopTown }}件目から{{ numBottomTown }}件目を表示</p>
   <v-simple-table>
     <thead>
-      <td>地名</td>
-      <td>建物倒壊危険度</td>
-      <td>火災危険度</td>
-      <td>災害時活動困難度</td>
-      <td>総合危険度</td>
+      <tr>
+        <th>地名</th>
+        <th>建物倒壊危険度</th>
+        <th>火災危険度</th>
+        <th>災害時活動困難度</th>
+        <th>総合危険度</th>
+      </tr>
     </thead>
     <tbody>
       <TownListItem
@@ -52,7 +54,7 @@ export default {
   watch: {
     pageNum (newPage) {
       // need to fix 'avoided redundant navigation' error
-      this.$router.push({path: 'search', query: {address: this.address, page: newPage}}).catch(()=>{})
+      this.$router.push({path: 'search', query: {address: this.address, page: newPage}})//.catch(()=>{})
     },
     $route () {
       this.callAPI()

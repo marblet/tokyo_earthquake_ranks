@@ -8,10 +8,12 @@
       <p>地盤分類：{{ town.base_class }}</p>
       <v-simple-table>
         <thead>
-          <td></td>
-          <td>危険量</td>
-          <td>順位</td>
-          <td>ランク</td>
+          <tr>
+            <th></th>
+            <th>危険量</th>
+            <th>順位</th>
+            <th>ランク</th>
+          </tr>
         </thead>
         <tbody>
           <tr>

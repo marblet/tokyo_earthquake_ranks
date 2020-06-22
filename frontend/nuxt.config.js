@@ -35,14 +35,18 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/vuetify',
   ],
+  vuetify: {
+
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/vuetify',
+    '@nuxtjs/proxy',
   ],
   /*
   ** Axios module configuration
@@ -53,6 +57,12 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
+  proxy: {
+    '/api': {
+      target: 'https://tokyo-earthquake-ranks.df.r.appspot.com/'
+      // target: 'http://localhost:8080'
+    }
+  },
   build: {
   }
 }

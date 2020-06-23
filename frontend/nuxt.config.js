@@ -53,15 +53,20 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   proxy: {
     '/api': {
-      target: 'https://tokyo-earthquake-ranks.df.r.appspot.com/'
+      changeOrigin: true,
+      target: 'https://tokyo-earthquake-ranks.df.r.appspot.com/',
       // target: 'http://localhost:8080'
+      pathRewrite: {
+        '^/api/': '/api/'
+      }
     }
   },
   build: {

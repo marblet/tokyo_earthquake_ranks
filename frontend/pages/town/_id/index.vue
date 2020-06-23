@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div v-show="loading" class="loader">
-      <p>loading</p>
-    </div>
-    <div v-show="!loading">
+    <div>
       <h2>{{ town.municipality + town.town_name }}</h2>
       <p>地盤分類：{{ town.base_class }}</p>
       <v-simple-table>
@@ -53,12 +50,45 @@ import Meta from '@/assets/mixins/Meta.js'
 export default {
   name: 'TownInfo',
   mixins: [Meta],
+  async asyncData ({ params }) {
+    if (process.client) {
+      return axios
+        .get(`/api/towninfo?id=${params.id}`)
+        .then(response => {
+          return {
+            town: response.data
+          }
+      })
+    } else {
+      return axios
+        .get(`https://tokyo-earthquake-ranks.df.r.appspot.com/api/towninfo?id=${params.id}`)
+        .then(response => {
+          return {
+            town: response.data
+          }
+      })
+    }
+    // return axios
+    //   .get(`/api/towninfo?id=${params.id}`)
+    //   .then(response => {
+    //     return {
+    //       town: response.data
+    //     }
+    //   }).catch(err => {
+    //     console.log(err)
+    //     console.log(axios.defaults.baseURL)
+    //   })
+  },
+  head () {
+    return {
+      title: this.town.municipality + this.town.town_name
+    }
+  },
   data () {
     return {
-      loading: true,
-      town: {'municipality': '', 'town_name': ''},
+      town: {},
       meta: {
-        title: this.$route.params['id'],
+        // title: town.municipality + town.town_name,
         description: 'Towninfo page',
         type: 'article',
         url: 'https://example.com/test',
@@ -66,16 +96,9 @@ export default {
       }
     }
   },
-  created () {
-    // itinialize matchedTowns using API
-    axios
-      .get(`/api/towninfo?id=${this.$route.params['id']}`)
-      .then(responce => this.update(responce))
-  },
   methods: {
-    update (responce) {
-      this.town = responce.data
-      this.loading = false
+    update (response) {
+      this.town = response.data
     }
   },
 }

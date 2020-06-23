@@ -9,10 +9,20 @@
 </template>
 
 <script>
+import Meta from '@/assets/mixins/Meta.js'
+
 export default {
-  head () {
+  name: 'About',
+  mixins: [Meta],
+  data () {
     return {
-      title: "About"
+      meta: {
+        title: 'About',
+        description: 'About page',
+        type: 'article',
+        url: 'https://example.com/test',
+        // image: 'https://example.com/img/ogp/test.jpg',
+      }
     }
   }
 }

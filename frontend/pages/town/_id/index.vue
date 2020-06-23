@@ -48,11 +48,22 @@
 
 <script>
 import axios from 'axios'
+import Meta from '@/assets/mixins/Meta.js'
+
 export default {
+  name: 'TownInfo',
+  mixins: [Meta],
   data () {
     return {
       loading: true,
       town: {'municipality': '', 'town_name': ''},
+      meta: {
+        title: this.$route.params['id'],
+        description: 'Towninfo page',
+        type: 'article',
+        url: 'https://example.com/test',
+        // image: 'https://example.com/img/ogp/test.jpg',
+      }
     }
   },
   created () {
@@ -65,11 +76,6 @@ export default {
     update (responce) {
       this.town = responce.data
       this.loading = false
-    }
-  },
-  head () {
-    return {
-      title: this.town.municipality + this.town.town_name
     }
   },
 }

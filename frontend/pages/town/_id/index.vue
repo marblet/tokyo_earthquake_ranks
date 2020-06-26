@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2>{{ town.municipality + town.town_name }}</h2>
+      <h1>{{ town.municipality + town.town_name }}</h1>
       <p>地盤分類：{{ town.base_class }}</p>
       <v-simple-table>
         <thead>
@@ -40,12 +40,29 @@
         </tbody>
       </v-simple-table>
     </div>
+    <div>
+      <h2>建物倒壊</h2>
+      <p>{{ description.collapse.overview }}</p>
+    </div>
+    <div>
+      <h2>火災</h2>
+      <p>{{ description.fire.overview }}</p>
+    </div>
+    <div>
+      <h2>活動困難</h2>
+      <p>{{ description.difficulty.overview }}</p>
+    </div>
+    <div>
+      <h2>総合</h2>
+      <p>{{ description.total.overview }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Meta from '@/assets/mixins/Meta.js'
+import desc from '@/assets/texts/description.json'
 
 export default {
   name: 'TownInfo',
@@ -93,7 +110,8 @@ export default {
         type: 'article',
         url: 'https://example.com/test',
         // image: 'https://example.com/img/ogp/test.jpg',
-      }
+      },
+      description: desc
     }
   },
   methods: {
@@ -105,5 +123,5 @@ export default {
 </script>
 
 <style>
-@import '@/assets/styles/loader.css'
+@import '@/assets/styles/loader.css';
 </style>

@@ -49,5 +49,11 @@ export default {
   margin: auto;
   width: 100%;
   max-width: 1200px;
+  padding: {
+    top: 10px;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+  }
 }
 </style>

@@ -42,8 +42,7 @@ export default {
 .top-wrapper {
   background: {
     image: url("~@/assets/3432480_m.jpg");
-    size: cover;
-    position: center center;
+    attachment: fixed;
   }
 }
 .top-content-wrapper {

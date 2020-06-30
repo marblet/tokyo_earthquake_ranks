@@ -1,5 +1,6 @@
 <template>
   <div class="municipality-wrapper">
+    <p>市区町村から探す</p>
     <div v-for="subarea in areaCodes" :key="subarea.name" class="subarea-wrapper">
       <h2>{{ subarea.name }}</h2>
       <ul>
@@ -25,10 +26,10 @@ export default {
 <style lang="scss">
 .municipality-wrapper {
   padding: {
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
   }
   background: {
     color: #FFF;
@@ -40,5 +41,8 @@ export default {
 .subarea-wrapper li {
   float: left;
   width: 220px;
+  margin: {
+    bottom: 10px;
+  }
 }
 </style>

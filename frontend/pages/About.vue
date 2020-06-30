@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about-wrapper">
     <h1>This is an about page</h1>
     <h2>サイトの説明</h2>
     <h3>建物倒壊</h3>
@@ -15,7 +15,7 @@
 
 <script>
 import Meta from '@/assets/mixins/Meta.js'
-import desc from '@/assets/texts/description.json'
+import desc from '@/assets/jsons/description.json'
 
 export default {
   name: 'About',
@@ -34,3 +34,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.about-wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="towninfo-wrapper">
     <div>
       <h1>{{ town.municipality + town.town_name }}</h1>
       <p>地盤分類：{{ town.base_class }}</p>
@@ -62,39 +62,26 @@
 <script>
 import axios from 'axios'
 import Meta from '@/assets/mixins/Meta.js'
-import desc from '@/assets/texts/description.json'
+import desc from '@/assets/jsons/description.json'
 
 export default {
   name: 'TownInfo',
   mixins: [Meta],
-  async asyncData ({ params }) {
-    if (process.client) {
-      return axios
-        .get(`/api/towninfo?id=${params.id}`)
-        .then(response => {
-          return {
-            town: response.data
-          }
-      })
-    } else {
-      return axios
-        .get(`https://tokyo-earthquake-ranks.df.r.appspot.com/api/towninfo?id=${params.id}`)
-        .then(response => {
-          return {
-            town: response.data
-          }
-      })
-    }
-    // return axios
-    //   .get(`/api/towninfo?id=${params.id}`)
-    //   .then(response => {
-    //     return {
-    //       town: response.data
-    //     }
-    //   }).catch(err => {
-    //     console.log(err)
-    //     console.log(axios.defaults.baseURL)
-    //   })
+  async asyncData ({ params, error }) {
+    // should be fixed in the future
+    const url = process.client ? `/api/towninfo?id=${params.id}` : `https://tokyo-earthquake-ranks.df.r.appspot.com/api/towninfo?id=${params.id}`
+    return axios
+      .get(url)
+      .then(response => {
+        if (response.data.Error) {
+          return error({
+            statusCode: 404
+          })
+        }
+        return {
+          town: response.data
+        }
+    })
   },
   head () {
     return {
@@ -124,4 +111,9 @@ export default {
 
 <style>
 @import '@/assets/styles/loader.css';
+.towninfo-wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}
 </style>

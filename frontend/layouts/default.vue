@@ -19,11 +19,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.v-main {
-  margin: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-</style>

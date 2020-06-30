@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search-wrapper">
     <AddressForm />
     <TownList />
   </div>
@@ -38,3 +38,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.search-wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+</style>

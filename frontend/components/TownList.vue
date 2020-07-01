@@ -29,6 +29,7 @@
 <script>
 import axios from 'axios'
 import TownListItem from './TownListItem'
+
 export default {
   name: 'TownList',
   components: {
@@ -64,6 +65,9 @@ export default {
     this.callAPI()
   },
   methods: {
+    InfiniteLoad () {
+      
+    },
     callAPI () {
       this.address = this.$route.query.address
       this.pageNum = parseInt(this.$route.query.page)

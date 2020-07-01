@@ -7,12 +7,13 @@ import (
 	"net/http"
 )
 
-func main() {
+func main () {
 	api := rest.NewApi()
 	api.Use(rest.DefaultDevStack...)
 	router, err := rest.MakeRouter(
 		rest.Get("/api/towns", apis.GetTowns),
 		rest.Get("/api/towninfo/:id", apis.GetTownInfo),
+		rest.Get("/api/municipality/:areacode", apis.GetMunicipalityTowns),
 	)
 	if err != nil {
 		log.Fatal(err)

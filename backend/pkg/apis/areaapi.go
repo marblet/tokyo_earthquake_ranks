@@ -2,15 +2,12 @@ package apis
 
 import (
 	"encoding/json"
-	"github.com/ant0ine/go-json-rest/rest"
 	"io/ioutil"
-	"math"
-	"strconv"
-	"strings"
 )
 
 type TownInfo struct {
 	ID 				uint	`json:"id"`
+	AreaCode		string	`json:"area_code"`
 	Municipality	string	`json:"municipality"`
 	TownName		string	`json:"town_name"`
 	BaseClass		string	`json:"base_class"`
@@ -30,6 +27,7 @@ type TownInfo struct {
 
 type SimpleTownInfo struct {
 	ID 				uint	`json:"id"`
+	AreaCode		string	`json:"area_code"`
 	Municipality	string	`json:"municipality"`
 	TownName		string	`json:"town_name"`
 	CollapseRank	string	`json:"collapse_rank"`
@@ -46,35 +44,8 @@ type Result struct {
 var townInfos []TownInfo
 var simpleTownInfos []SimpleTownInfo
 
-func GetTowns(w rest.ResponseWriter, r *rest.Request) {
-	v := r.URL.Query()
-	address := v.Get("address")
-	page, _ := strconv.Atoi(v.Get("page"))
-	displaynum, _ := strconv.Atoi(v.Get("displaynum"))
-	if page < 1 || displaynum < 1 {
-		w.WriteJson(Result{MatchedNum: 0, MatchedTowns: nil})
-		return
-	}
-	foundTowns := filter(address)
-	foundNum := len(foundTowns)
-	left := int(math.Min(float64(foundNum), float64((page - 1) * displaynum)))
-	right := int(math.Min(float64(foundNum), float64(page * displaynum)))
-	foundTowns = foundTowns[left: right]
-	result := Result{MatchedNum: uint(foundNum), MatchedTowns: foundTowns}
-	w.WriteJson(result)
-}
 
-func filter(address string) []SimpleTownInfo {
-	var ret []SimpleTownInfo
-	for _, v := range simpleTownInfos {
-		if strings.Contains(v.Municipality + v.TownName, address) {
-			ret = append(ret, v)
-		}
-	}
-	return ret
-}
-
-func LoadTownFile() {
+func LoadTownFile () {
 	raw, err := ioutil.ReadFile("assets/all2.json")
 	if err != nil {
 		panic(err)

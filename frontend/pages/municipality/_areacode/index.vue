@@ -21,7 +21,9 @@
         </tbody>
       </v-simple-table>
     </div>
-    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    <no-ssr>
+      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    </no-ssr>
   </div>
 </template>
 
@@ -45,25 +47,23 @@ export default {
     return axios
       .get(url)
       .then(response => {
-        if (response.data.Error) {
+        if (response.data.Error || response.data.matched_num == 0) {
           return error({
             statusCode: 404
           })
         }
         return {
+          matchedNum: response.data.matched_num,
           towns: response.data.matched_towns
         }
     })
   },
   data () {
     return {
-      matchedNum: 0,
       length: 0,
       pageNum: 1,
       displayNum: 20,
-      towns: [],
       meta: {
-        title: this.$route.query.address,
         description: 'About page',
         type: 'article',
         url: 'https://example.com/test',

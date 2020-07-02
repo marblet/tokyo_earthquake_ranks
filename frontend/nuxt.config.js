@@ -11,7 +11,10 @@ export default {
   */
   head: {
     // title: process.env.npm_package_name || '',
-    titleTemplate: '%s - Tokyo Earthquake Ranks',
+    titleTemplate: '%s - Find Safe City',
+    htmlAttrs: {
+      lang: 'ja'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -31,6 +34,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/infiniteloading', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

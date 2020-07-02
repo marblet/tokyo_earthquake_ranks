@@ -2,7 +2,7 @@
   <div class="address-field">
     <v-text-field
       v-model="address"
-      v-on:keydown.13="clicked"
+      v-on:keydown.13="entered"
       solo
       append-icon="mdi-magnify"
     ></v-text-field>
@@ -20,10 +20,10 @@ export default {
     }
   },
   methods: {
-    clicked () {
+    entered () {
       // avoid redundant navigation
-      if (this.address === this.$route.query.address && parseInt(this.$route.query.page) === 1) return
-      this.$router.push({path: 'search', query: {address: this.address, page: 1}})
+      if (this.address === this.$route.query.address) return
+      this.$router.push({path: 'search', query: {address: this.address}})
     }
   }
 }

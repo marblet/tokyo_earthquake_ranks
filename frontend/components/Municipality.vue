@@ -4,7 +4,7 @@
     <div v-for="subarea in areaCodes" :key="subarea.name" class="subarea-wrapper">
       <h2>{{ subarea.name }}</h2>
       <ul>
-        <li v-for="area in subarea.list" :key="area.area_code"><router-link :to="`municipality/${area.area_code}`">{{ area.municipality }}</router-link></li>
+        <li v-for="area in subarea.list" :key="area.area_code"><nuxt-link :to="`municipality/${area.area_code}`">{{ area.municipality }}</nuxt-link></li>
       </ul>
      </div>
   </div>

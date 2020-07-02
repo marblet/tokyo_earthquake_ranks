@@ -1,5 +1,5 @@
 <template>
-  <v-footer>FindSafeCity</v-footer>
+  <v-footer>Find Safe City</v-footer>
 </template>
 
 <script>

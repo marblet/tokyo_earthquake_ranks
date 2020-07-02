@@ -21,9 +21,10 @@
         </tbody>
       </v-simple-table>
     </div>
-    <no-ssr>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
-    </no-ssr>
+    <client-only>
+      <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
+      </infinite-loading>
+    </client-only>
   </div>
 </template>
 
@@ -57,6 +58,11 @@ export default {
           towns: response.data.matched_towns
         }
     })
+  },
+  head () {
+    return {
+      title: this.towns[0].municipality
+    }
   },
   data () {
     return {

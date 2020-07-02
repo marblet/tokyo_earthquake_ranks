@@ -22,9 +22,10 @@
         </tbody>
       </v-simple-table>
     </div>
-    <no-ssr>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
-    </no-ssr>
+    <client-only>
+      <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
+      </infinite-loading>
+    </client-only>
   </div>
 </template>
 

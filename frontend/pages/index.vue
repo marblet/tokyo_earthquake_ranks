@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       meta: {
-        title: 'Tokyo Earthquake Ranks',
+        title: 'Find Safe City',
         description: 'ページ個別のディスクリプション',
         type: 'article',
         url: 'https://example.com/test',

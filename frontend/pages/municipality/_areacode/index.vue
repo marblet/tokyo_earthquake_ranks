@@ -1,5 +1,6 @@
 <template>
   <div class="municipalitylist-wrapper">
+    <h2>{{ this.towns[0].municipality }}</h2>
     <div class="municipalitylist">
       <p>全{{ this.matchedNum }}件</p>
       <v-simple-table>

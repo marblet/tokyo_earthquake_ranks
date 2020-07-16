@@ -2,7 +2,9 @@
   <div class="top-wrapper">
     <div class="top-content-wrapper">
       <Title />
-      <AddressForm />
+      <div class="addressform-wrapper">
+        <AddressForm />
+      </div>
       <Municipality />
     </div>
   </div>
@@ -55,5 +57,11 @@ export default {
     left: 10px;
     right: 10px;
   }
+}
+.addressform-wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 1000px;
+  height: 200px;
 }
 </style>

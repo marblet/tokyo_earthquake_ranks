@@ -3,42 +3,44 @@
     <div>
       <h1>{{ town.municipality + town.town_name }}</h1>
       <p>地盤分類：{{ town.base_class }}</p>
-      <v-simple-table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>危険量</th>
-            <th>順位</th>
-            <th>ランク</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>建物倒壊</td>
-            <td>{{ town.collapse_ha }} 棟/ha</td>
-            <td>{{ town.collapse_order }} / 5177</td>
-            <td>{{ town.collapse_rank }}</td>
-          </tr>
-          <tr>
-            <td>火災</td>
-            <td>{{ town.fire_ha }} 棟/ha</td>
-            <td>{{ town.fire_order }} / 5177</td>
-            <td>{{ town.fire_rank }}</td>
-          </tr>
-          <tr>
-            <td>活動困難</td>
-            <td>{{ town.difficulty }}</td>
-            <td>{{ town.difficulty_order }} / 5177</td>
-            <td>{{ town.difficulty_rank }}</td>
-          </tr>
-          <tr>
-            <td>総合</td>
-            <td>{{ town.total_ha }} 棟/ha</td>
-            <td>{{ town.total_order }} / 5177</td>
-            <td>{{ town.total_rank }}</td>
-          </tr>
-        </tbody>
-      </v-simple-table>
+      <v-card>
+        <v-card-title>総合ランク: {{ town.total_rank }}</v-card-title>
+        <v-card-text>
+          <p>危険量: {{ town.total_ha }} 棟/ha</p>
+          <p>順位: {{ town.total_order }} / 5177</p>
+        </v-card-text>
+      </v-card>
+      <v-container fluid>
+        <v-row dense>
+          <v-col>
+            <v-card>
+              <v-card-title>建物倒壊: {{ town.collapse_rank }}</v-card-title>
+              <v-card-text>
+                <p>危険量: {{ town.collapse_ha }} 棟/ha</p>
+                <p>順位: {{ town.collapse_order }} / 5177</p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col>
+            <v-card>
+              <v-card-title>火災: {{ town.fire_rank }}</v-card-title>
+              <v-card-text>
+                <p>危険量: {{ town.fire_ha }} 棟/ha</p>
+                <p>順位: {{ town.fire_order }} / 5177</p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col>
+            <v-card>
+              <v-card-title>活動困難: {{ town.difficulty_rank }}</v-card-title>
+              <v-card-text>
+                <p>困難度: {{ town.difficulty }}</p>
+                <p>順位: {{ town.difficulty_order }} / 5177</p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
     <div>
       <h2>建物倒壊</h2>

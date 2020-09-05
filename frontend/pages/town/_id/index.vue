@@ -1,8 +1,10 @@
 <template>
   <div class="towninfo-wrapper">
     <div>
-      <h1>{{ town.municipality + town.town_name }}</h1>
-      <p><nuxt-link :to="`/municipality/${town.area_code}`">{{ town.municipality }}</nuxt-link> > {{ town.town_name }}</p>
+      <div class="towntitle">
+        <h1>{{ town.municipality + town.town_name }}</h1>
+        <p><nuxt-link :to="`/municipality/${town.area_code}`">{{ town.municipality }}</nuxt-link> > {{ town.town_name }}</p>
+      </div>
       <p>地盤分類：{{ town.base_class }}</p>
       <v-card>
         <v-card-title>総合ランク: {{ town.total_rank }}</v-card-title>
@@ -118,5 +120,11 @@ export default {
   margin: auto;
   width: 100%;
   max-width: 1200px;
+}
+.towntitle {
+  border-bottom: 4px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 </style>

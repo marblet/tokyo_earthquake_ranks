@@ -12,8 +12,8 @@ func main () {
 	api.Use(rest.DefaultDevStack...)
 	router, err := rest.MakeRouter(
 		rest.Get("/api/towns", apis.GetTowns),
-		rest.Get("/api/towninfo/:id", apis.GetTownInfo),
-		rest.Get("/api/municipality/:areacode", apis.GetMunicipalityTowns),
+		rest.Get("/api/towns/:id", apis.GetTownInfo),
+		rest.Get("/api/municipalities/:areacode/towns", apis.GetMunicipalityTowns),
 	)
 	if err != nil {
 		log.Fatal(err)

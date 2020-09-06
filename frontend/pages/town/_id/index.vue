@@ -74,7 +74,7 @@ export default {
   mixins: [Meta],
   async asyncData ({ params, error }) {
     // should be fixed in the future
-    const url = process.client ? `/api/towninfo/${params.id}` : `https://tokyo-earthquake-ranks.df.r.appspot.com/api/towninfo/${params.id}`
+    const url = process.client ? `/api/towns/${params.id}` : `https://tokyo-earthquake-ranks.df.r.appspot.com/api/towns/${params.id}`
     return axios
       .get(url)
       .then(response => {

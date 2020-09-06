@@ -2,7 +2,7 @@
   <div class="municipality-wrapper">
     <p>市区町村から探す</p>
     <div v-for="subarea in areaCodes" :key="subarea.name" class="subarea-wrapper">
-      <h2>{{ subarea.name }}</h2>
+      <h2 class="underline">{{ subarea.name }}</h2>
       <ul>
         <li v-for="area in subarea.list" :key="area.area_code"><nuxt-link :to="`municipality/${area.area_code}`">{{ area.municipality }}</nuxt-link></li>
       </ul>
@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style lang="scss">
+.underline {
+  border-bottom: 3px solid black;
+  margin-bottom: 10px;
+}
 .municipality-wrapper {
   padding: {
     top: 15px;

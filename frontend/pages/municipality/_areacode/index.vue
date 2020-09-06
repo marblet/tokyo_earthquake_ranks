@@ -44,7 +44,7 @@ export default {
   mixins: [Meta],
   async asyncData ({ params, error }) {
     // should be fixed in the future
-    const q = `/api/municipality/${params.areacode}?page=1&displaynum=20`
+    const q = `/api/municipalities/${params.areacode}/towns?page=1&displaynum=20`
     const url = process.client ? q : 'https://tokyo-earthquake-ranks.df.r.appspot.com' + q
     return axios
       .get(url)
@@ -81,7 +81,7 @@ export default {
   methods: {
     infiniteHandler ($state) {
       this.pageNum += 1;
-      axios.get(`/api/municipality/${this.$route.params['areacode']}?page=${this.pageNum}&displaynum=${this.displayNum}`
+      axios.get(`/api/municipalities/${this.$route.params['areacode']}/towns?page=${this.pageNum}&displaynum=${this.displayNum}`
       ).then( response  => {
         this.matchedNum = response.data.matched_num
         if (response.data.matched_towns.length > 0) {

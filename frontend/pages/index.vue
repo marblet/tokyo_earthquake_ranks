@@ -30,7 +30,7 @@ export default {
     return {
       meta: {
         title: 'Find Safe City',
-        description: 'ページ個別のディスクリプション',
+        description: '東京都が実施した地域調査をもとに、地震に強い街を見つけましょう。',
         type: 'article',
         url: 'https://example.com/test',
         // image: 'https://example.com/img/ogp/test.jpg',
@@ -43,7 +43,8 @@ export default {
 <style lang="scss">
 .top-wrapper {
   background: {
-    image: url("~@/assets/3432480_m.jpg");
+    // image: url("~@/assets/3432480_m.jpg");
+    image: url("https://drive.google.com/uc?export=view&id=1rp_rWp1EC5eVPAMhK9xlV3XW0e2rGFel");
     attachment: fixed;
   }
 }

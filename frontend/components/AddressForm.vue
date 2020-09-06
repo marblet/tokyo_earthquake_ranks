@@ -5,6 +5,7 @@
       v-on:keydown.13="entered"
       solo
       append-icon="mdi-magnify"
+      placeholder="千代田区飯田橋"
     ></v-text-field>
   </div>
 </template>
@@ -31,7 +32,6 @@ export default {
 
 <style>
 .address-field {
-  width: 90%;
   margin: auto;
 }
 </style>
